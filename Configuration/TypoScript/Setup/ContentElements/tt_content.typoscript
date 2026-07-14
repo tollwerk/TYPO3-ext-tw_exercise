@@ -1,0 +1,11 @@
+tt_content {
+    twexercise_cloze =< lib.contentElement
+    twexercise_cloze {
+        templateName = Cloze
+        dataProcessing.200 = twexercise-cloze-text-data
+        dataProcessing.200 {
+            as = clozeTextData
+            categoryList.field = categories
+        }
+    }
+}

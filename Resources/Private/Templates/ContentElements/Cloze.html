@@ -1,0 +1,64 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+      xmlns:twexercise="http://typo3.org/ns/Tollwerk/tw_exercise/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:comment><!--
+
+    Render a 'cloze' content element.
+
+--></f:comment>
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:comment><!-- Dynamically add CSS and JavaScript; CSS files require the priority argument so that they can be loaded and overwritten before other CSS --></f:comment>
+    <f:asset.css identifier="twexercize_base" priority="true" href="EXT:tw_exercise/Resources/Public/Css/Base.css"/>
+    <f:asset.css identifier="twexercize_cloze" priority="true" href="EXT:tw_exercise/Resources/Public/Css/Cloze.css" />
+    <f:asset.css identifier="twexercize_cloze-dialog" priority="true" href="EXT:tw_exercise/Resources/Public/Css/SolutionsDialog.css" />
+    <f:asset.script identifier="twexercize_cloze-dialog" src="EXT:tw_exercise/Resources/Public/JavaScript/SolutionsDialog.js" />
+    <f:asset.script identifier="twexercize_cloze" src="EXT:tw_exercise/Resources/Public/JavaScript/Cloze.js" />
+
+    <f:comment><!-- FillBlanks main element --></f:comment>
+    <div class="Cloze"
+         id="cloze-{data.uid}"
+         data-cloze>
+        <f:comment><!-- All paragraphs --></f:comment>
+        <div class="Cloze__text">
+        <f:for each="{cloze.paragraphs}" as="paragraph" iteration="i">
+            <f:comment><!-- Single paragraph --></f:comment>
+            <p class="Cloze__paragraph">
+                <f:comment><!-- Iterate through text and blank parts of paragraph --></f:comment>
+                <f:for each="{paragraph}" as="part">
+                    <f:comment><!-- Part is a simple text --></f:comment>
+                    <f:if condition="{part.text}"><span
+                            class="Cloze__text-part">{part.text}</span></f:if>
+
+                    <f:comment><!-- Part is a blank --></f:comment>
+                    <f:if condition="{part.gap}">
+                        <span class="Cloze__gap-part">
+                            <f:render partial="Cloze/GapPart" arguments="{clozeId: data.uid, part: part}"/>
+                        </span>
+                    </f:if>
+                </f:for>
+            </p>
+        </f:for>
+        </div>
+        <f:comment><!-- Solutions table inside dialog --></f:comment>
+        <f:render partial="Exercises/SolutionsDialog"
+                  contentAs="content"
+                  arguments="{exerciseId: 'cloze-{data.uid}', title: '{data.header}'}">
+            <f:render partial="Exercises/SolutionsTable"
+                      arguments="{
+                        exerciseId: 'cloze-{data.uid}',
+                        currentPoints: 0,
+                        maxPoints: cloze.maxPoints,
+                        pointsPerAnswer: data.tx_twexercise_points,
+                        pointsMultiplier: data.tx_twexercise_points_multiplier,
+                        solutions: '{twexercise:solutionsTable.cloze(gaps: cloze.gaps)}'
+
+                      }"/>
+        </f:render>
+    </div>
+</f:section>
+
+</html>

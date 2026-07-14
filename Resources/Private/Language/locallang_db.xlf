@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="de" datatype="plaintext" original="EXT:tw_exercise/Resources/Private/Language/locallang_db.xlf" date="2024-07-22T00:00:00Z" product-name="tw_exercise">
+        <header/>
+        <body>
+            <trans-unit id="settings.debug">
+                <source>Debug-Modus aktivieren (zusätzlich muss in der globalen Systemkonfiguration das Debugging aktiviert sein)</source>
+            </trans-unit>
+
+            <!-- New columns for tt_content -->
+            <trans-unit id="tt_content.tx_twexercise_points">
+                <source>Punkte pro Lücke (1 bis 255)</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_twexercise_points_multiplier">
+                <source>Punkte-Multiplikator (1 bis 255)</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_twexercise_cloze_gaps">
+                <source>Lücken</source>
+            </trans-unit>
+
+            <!-- Content element: twexercise_cloze -->
+            <trans-unit id="tt_content.twexercise_cloze.title">
+                <source>Lückentext</source>
+            </trans-unit>
+            <trans-unit id="tt_content.twexercise_cloze.description">
+                <source>Ein frei eingebbarer Lückentext. Auswahlmöglichkeiten und sonstige Einstellungen jeder einzelnen Lücke sind anpassbar.</source>
+            </trans-unit>
+
+            <!-- tx_twexercise_domain_model_cloze_gap -->
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap">
+                <source>Lücke</source>
+            </trans-unit>
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.identifier">
+                <source>Nummerierung, zum Beispiel "A2"</source>
+            </trans-unit>
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.is_example">
+                <source>Ist nur ein Beispiel</source>
+            </trans-unit>
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.value">
+                <source>Richtige Antwort</source>
+            </trans-unit>
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.options">
+                <source>Alle Antworten, inklusive der richtigen</source>
+            </trans-unit>
+
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.options.description">
+                <source>Eine Antwort pro Zeile. Anworten können mit einer vorangestellten Beschriftung mit Doppelpunkt versehen werden, zum Beispiel "a: Erste Antwort".</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

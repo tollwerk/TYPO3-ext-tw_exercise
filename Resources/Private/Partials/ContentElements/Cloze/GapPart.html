@@ -1,0 +1,78 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+      xmlns:twexercise="http://typo3.org/ns/Tollwerk/tw_exercise/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:comment><!--
+
+    A single blank inside a cloze
+
+--></f:comment>
+
+<span class="ClozeGap">
+    <f:comment><!-- Set basic reading-id --></f:comment>
+    <f:variable name="gapId" value="{part.gap.uid}" />
+
+    <f:comment><!-- Leading context --></f:comment>
+    <f:if condition="{part.leadingDescription}">
+        <span class="ClozeGap__description ClozeGap__description--leading"
+              id="cloze-{clozeId}-{gapId}-leading">{part.leadingDescription}</span>
+    </f:if>
+
+    <f:comment><!-- Input element for the blank --></f:comment>
+    <span class="ClozeGap__input-wrap{f:if(condition: '{part.gap.isExample}', then: ' ClozeGap__input-wrap--example')}">
+        <label class="ClozeGap__label"
+               for="cloze-{clozeId}-{gapId}-input"
+               id="cloze-{clozeId}-{gapId}-label">
+            <span class="hide-element"><f:if condition="{part.gap.isExample}"><f:then>{f:translate(key:
+                'cloze.example.gap', extensionName: 'TwExercise')}</f:then><f:else>{f:translate(key:
+                'cloze.gap', extensionName: 'TwExercise')}</f:else></f:if></span>{part.gap.identifier}</label>
+        <select class="ClozeGap__input{f:if(condition: '{part.gap.isExample}', then: ' ClozeGap__input--example')}"
+                id="cloze-{clozeId}-{gapId}-input"
+                data-labelledby="cloze-{clozeId}-{gapId}-leading cloze-{clozeId}-{gapId}-label cloze-{clozeId}-{gapId}-input cloze-{clozeId}-{gapId}-trailing"
+                data-identifier="{part.gap.identifier}"
+                aria-label="{f:translate(key: 'cloze.gap.aria_label', extensionName: 'TwExercise')}"
+                data-select-element
+                {f:if(condition: '{part.gap.isExample}', then: 'data-select-example')}>
+            <f:comment><!-- Initial generic option before selection --></f:comment>
+            <option value=""
+                    selected
+                    disabled
+                    hidden
+                    data-option-text="{f:translate(key: 'solutions_table.given_answer.empty',
+                    extensionName: 'TwExercise')}">---</option>
+            <f:comment><!-- Options from backend, rendered depending on example status --></f:comment>
+            <f:if condition="{part.gap.isExample}">
+                <f:then>
+                    <f:for each="{part.gap.options}" key="optionKey" as="option">
+                        <option data-key="{optionKey}"
+                                data-option="{option}"
+                                data-option-text="{optionKey}: {option}"
+                                value="{optionKey}"
+                                {f:if(condition: '{part.gap.value} == {option}', then: 'selected="selected"',
+                                    else: 'disabled="disabled"')}><f:translate key="cloze.gap.option.value"
+                                                                               extensionName="TwExercise"
+                                                                               arguments="{0: optionKey,1: option}" /></option>
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <f:for each="{part.gap.options}" key="optionKey" as="option">
+                        <option data-key="{optionKey}"
+                                data-option="{option}"
+                                data-option-text="{optionKey}: {option}"
+                                value="{optionKey}"><f:translate key="cloze.gap.option.value"
+                                                                 extensionName="TwExercise"
+                                                                 arguments="{0: optionKey,1: option}" /></option>
+                    </f:for>
+                </f:else>
+            </f:if>
+        </select>
+    </span>
+
+    <f:comment><!-- Trailing context --></f:comment>
+    <f:if condition="{part.trailingDescription}">
+        <span class="ClozeGap__description ClozeGap__description--trailing"
+              id="cloze-{clozeId}-{gapId}-trailing">{part.trailingDescription}</span>
+    </f:if>
+    </span>
+
+</html>

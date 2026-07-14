@@ -1,0 +1,283 @@
+/* ==========================================================================
+   Basic colors
+   ========================================================================== */
+
+:root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-exercise-label: #ffffff;
+    --bgcolor-exercise-label: #25377a;
+    --color-arrow: #757575;
+    --bgcolor-button: #008093;
+    --color-button: #ffffff;
+    --bgcolor-button--inverted: #ffff00;
+    --color-button--inverted: #000000;
+}
+
+/* ==========================================================================
+   Font
+   ========================================================================== */
+
+:root {
+    --font-family--primary: 'Primary', sans-serif;
+    --font-family--secondary: 'Secondary', sans-serif;
+}
+
+/* Font import
+   ========================================================================== */
+
+@font-face {
+    font-family: 'Primary';
+    src: url('../Fonts/OpenSans--400.woff2') format('woff2'),
+        url('../Fonts/OpenSans--400.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Secondary';
+    src: url('../Fonts/AtkinsonHyperlegible--700.woff2') format('woff2'),
+        url('../Fonts/AtkinsonHyperlegible--700.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ==========================================================================
+   Styling classes
+   ========================================================================== */
+
+.informal {
+    /* @see https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html */
+    list-style-type: none;
+    /*list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");*/
+    margin: 0;
+    padding: 0;
+
+    & li::before {
+        content: "\200B"; /* add zero-width space */
+        position: absolute;
+    }
+}
+
+.hide-element {
+    width: 1px !important;
+    height: 1px !important;
+    position: absolute !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+/* ==========================================================================
+   Presets
+   ========================================================================== */
+
+/**
+ * Sources other than tollwerk:
+ * @see: github.com/necolas/normalize.css | normalize.css v8.0.1 | MIT License
+ * @see: https://www.joshwcomeau.com/css/custom-css-reset/ | A modern CSS Reset by Josh Comeau
+ */
+
+/* Document
+   ========================================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font: 400 1rem/1.5 var(--font-family--primary);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. */
+}
+
+/* Sections
+   ========================================================================== */
+
+body {
+    margin: 0; /* Remove the margin in all browsers. */
+    color: #000000;
+    background-color: #ffffff;
+    font-feature-settings: "lnum" 1, "liga" 1, "dlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased; /* Improve text rendering */
+}
+
+/**
+* More effective, predictable and understandable results compared to font-feature-settings
+* @see: https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings
+*/
+
+@supports (font-variant: common-ligatures discretionary-ligatures lining-nums) {
+    body {
+        font-variant: common-ligatures discretionary-ligatures lining-nums;
+    }
+}
+
+main {
+    display: block; /* Render the `main` element consistently in IE. */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+a {
+    background-color: transparent; /* Remove the gray background on active links in IE 10. */
+}
+
+abbr[title] {
+    border-bottom: none; /* Remove the bottom border in Chrome 57. */
+    text-decoration: underline; /* Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari. */
+    text-decoration: underline dotted; /* Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari. */
+}
+
+b, strong {
+    font-weight: bolder; /* Add the correct font weight in Chrome, Edge, and Safari. */
+}
+
+small {
+    font-size: 80%; /* Add the correct font size in all browsers. */
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/* Improve media defaults */
+audio, img, object, picture, video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+@media(--bp-medium--max) {
+    iframe {
+        max-height: 500px !important;
+    }
+}
+
+img {
+    border-style: none; /* Remove the border on images inside links in IE 10. */
+}
+
+/* Forms
+   ========================================================================== */
+
+button, input, select, textarea {
+    margin: 0; /* Remove the margin in Firefox an Safari. */
+    font: inherit; /* Remove built-in form typography styles. */
+    line-height: 1.25; /* Remove line-height from 1.5 to 1.25 for focused styling */
+}
+
+button, input {
+    overflow: visible; /* Show the overflow in IE and for `input` additionally in Edge. */
+}
+
+button, select {
+    text-transform: none; /* Remove the inheritance of text transform for `button` in Edge, Firefox, IE and for `select` in Firefox. */
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: button; /* Correct the inability to style clickable types in iOS and Safari. */
+}
+
+button > * {
+    position: relative; /* Prevent shifting while active in IE. */
+}
+
+legend {
+    max-width: 100%; /* Correct the text wrapping in Edge and IE. */
+    color: inherit; /* Correct the color inheritance from `fieldset` elements in IE. */
+    white-space: normal; /* Correct the text wrapping in Edge and IE. */
+}
+
+textarea {
+    overflow: auto; /* Remove the default vertical scrollbar in IE 10+. */
+}
+
+[type="checkbox"], [type="radio"] {
+    padding: 0; /* Remove the padding in IE 10. */
+}
+
+[type="number"] {
+    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+        height: auto; /* Correct the cursor style of increment and decrement buttons in Chrome. */
+    }
+}
+
+[type="search"] {
+    -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari. */
+}
+
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; /* Remove the inner padding in Chrome and Safari on macOS. */
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button; /* Correct the inability to style clickable types in iOS and Safari. */
+    font: inherit; /* Change font properties to `inherit` in Safari. */
+}
+
+/* Interactive
+   ========================================================================== */
+
+details {
+    display: block; /* Add the correct display in Edge, IE 10+, and Firefox. */
+}
+
+summary {
+    display: list-item; /* Add the correct display in all browsers. */
+}
+
+*[aria-busy="true"] {
+    cursor: wait;
+}
+
+*[inert], .inert {
+    opacity: .5;
+}
+
+/* Misc
+   ========================================================================== */
+
+template {
+    display: none; /* Add the correct display in IE 10+. */
+}
+
+[hidden] {
+    display: none; /* Add the correct display in IE 10. */
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family--secondary), sans-serif;
+    line-height: 1.22;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.frame {
+    max-width: 60ch;
+    margin: 2rem 1.5rem;
+}
+
+.frame + .frame {
+    margin-top: 4rem;
+}

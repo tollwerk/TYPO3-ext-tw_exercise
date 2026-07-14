@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Tollwerk\TwExercise\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Controller/*'
+
+  Tollwerk\TwExercise\DataProcessing\ClozeTextDataProcessor:
+    tags:
+      - name: 'data.processor'
+        identifier: 'twexercise-cloze-text-data'

@@ -1,0 +1,120 @@
+.SolutionsDialog[aria-hidden="true"] {
+    display: none;
+}
+
+.SolutionsDialog {
+    z-index: 2;
+    display: flex;
+}
+
+.SolutionsDialog, .SolutionsDialog__overlay {
+    position: fixed;
+    inset: 0;
+}
+
+.SolutionsDialog__overlay {
+    background-color: rgba(43, 46, 56, .9);
+}
+
+.SolutionsDialog__wrapper {
+    position: relative;
+    max-width: 64rem;
+    max-height: 100vh;
+    padding: 1rem;
+    margin: 0;
+
+    background: #ebe8e3;
+    color: #000000;
+    overflow: auto;
+}
+
+.SolutionsDialog__header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.SolutionsDialog__heading {
+    margin-top: 0;
+}
+
+.SolutionsDialog__close-button {
+    background: inherit;
+    color: #000000;
+    font-family: var(--font-family--secondary), sans-serif;
+    font-weight: 700;
+}
+
+.SolutionsDialog__close-button--text {
+    padding: .75rem 2rem;
+    border: 2px solid transparent;
+
+    background: var(--bgcolor-button);
+    color: var(--color-button);
+    font-family: var(--font-family--secondary), sans-serif;
+    font-weight: 700;
+}
+
+.SolutionsDialog__close-button--text:hover, .SolutionsDialog__close-button--text:focus {
+    border-color: var(--color-button--inverted);
+    background: var(--bgcolor-button--inverted);
+    color: var(--color-button--inverted);
+    text-decoration: underline;
+}
+
+.SolutionsDialog__close-button--text:focus, .SolutionsDialog__close-button--icon:focus {
+    outline: 2px solid var(--color-button--inverted);
+    outline-offset: 2px;
+}
+
+.SolutionsDialog__close-button--icon {
+    border: none;
+}
+
+.SolutionsDialog__close-button--icon svg {
+	width: 2em;
+	vertical-align: middle;
+	fill: currentColor;
+}
+
+.SolutionsDialog__content {
+    overflow-x: auto;
+}
+
+.SolutionsDialog__footer {
+    margin-top: 1rem;
+}
+
+.SolutionsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.SolutionsTable__caption {
+    margin-bottom: 1rem;
+    text-align: left;
+    font-weight: 700;
+}
+
+.SolutionsTable td, .SolutionsTable th {
+    padding: .5rem;
+    border: 1px solid var(--color-black);
+    text-align: left;
+}
+
+@media (min-width: 36rem) {
+    .SolutionsDialog__overlay {
+        display: flex;
+        align-items: center;
+    }
+
+    .SolutionsDialog__wrapper {
+		width: calc(100vw - 6rem);
+		max-width: 64rem;
+		max-height: calc(100vh - 6rem);
+		padding: 2rem;
+		margin: 0 auto;
+
+		overflow-y: auto;
+    }
+}

@@ -1,0 +1,8 @@
+# customsubcategory=common=Common
+
+plugin.tx_twexercise {
+    settings {
+        # cat=plugin.tx_twexercise/common/100; type=boolean; label=LLL:EXT:tw_exercise/Resources/Private/Language/locallang_db.xlf:settings.debug
+        debug = 0
+    }
+}

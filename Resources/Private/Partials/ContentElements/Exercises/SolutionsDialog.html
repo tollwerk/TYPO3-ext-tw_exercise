@@ -1,0 +1,82 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+      xmlns:twexercise="http://typo3.org/ns/Tollwerk/tw_exercise/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:comment><!--
+
+    Table for solutions for exercises like cloze texts
+
+    @param string content Inner content
+    @param string title   Optional. Title for the solutions/dialog, when there are multiple ones.
+
+--></f:comment>
+
+<f:comment><!-- Default rendering when no specific section is selected --></f:comment>
+<f:render section="OpenDialogButton" arguments="{_all}" />
+<f:render section="Dialog" arguments="{_all}" />
+
+<f:comment><!-- Open dialog button --></f:comment>
+<f:section name="OpenDialogButton">
+    <button class="Cloze__open-dialog-button"
+            type="button"
+            data-dialog-open="{exerciseId}-solutions-dialog"><f:if
+            condition="{title}"><f:then>{f:translate(key: 'solutions_dialog.show.with_title',
+        extensionName: 'TwExercise', arguments: '{0: title}')}</f:then><f:else>{f:translate(key: 'solutions_dialog.show',
+        extensionName: 'TwExercise')}</f:else></f:if></button>
+</f:section>
+
+<f:comment><!-- Dialog --></f:comment>
+<f:section name="Dialog">
+    <dialog class="SolutionsDialog"
+            id="{exerciseId}-solutions-dialog"
+            aria-labelledby="solution-dialog-headline"
+            aria-hidden="true"
+            data-solutions-dialog>
+        <div class="SolutionsDialog__overlay">
+            <div class="SolutionsDialog__wrapper">
+                <header class="SolutionsDialog__header">
+                    <div class="SolutionsDialog__close">
+                        <form class="SolutionsDialog__close-form" method="dialog">
+                            <button class="SolutionsDialog__close-button SolutionsDialog__close-button--icon"
+                                    type="submit"
+                                    formmethod="dialog"
+                                    data-dialog-close="{exerciseId}-solutions-dialog">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 -0.5 21 21"
+                                     aria-hidden="true"
+                                     focusable="false">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g transform="translate(-419.000000, -240.000000)" fill="#000000">
+                                            <g transform="translate(56.000000, 160.000000)">
+                                                <polygon points="375.0183 90 384 98.554 382.48065 100 373.5 91.446 364.5183 100 363 98.554 371.98065 90 363 81.446 364.5183 80 373.5 88.554 382.48065 80 384 81.446"></polygon>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <span class="hide-element">{f:translate(key: 'solutions_dialog.close',
+                                    extensionName: 'TwExercise')}</span>
+                            </button>
+                        </form>
+                    </div>
+                    <h1 id="solution-dialog-headline"
+                        class="SolutionsDialog__heading">{f:translate(key: 'solutions_dialog.heading',
+                        extensionName: 'TwExercise')} {f:if(condition: '{title}', then: '– {title}')}</h1>
+                </header>
+                <f:comment><!-- Content --></f:comment>
+                <div class="SolutionsDialog__content">
+                    <f:format.raw>{content}</f:format.raw>
+                </div>
+                <f:comment><!-- Footer --></f:comment>
+                <footer class="SolutionsDialog__footer">
+                    <form class="SolutionsDialog__close-form" method="dialog">
+                        <button class="SolutionsDialog__close-button SolutionsDialog__close-button--text"
+                                type="submit"
+                                formmethod="dialog"
+                                data-dialog-close="{exerciseId}-solutions-dialog">{f:translate(
+                            key: 'solutions_dialog.close', extensionName: 'TwExercise')}</button>
+                    </form>
+                </footer>
+            </div>
+        </div>
+    </dialog>
+</f:section>

@@ -1,0 +1,87 @@
+.Cloze {
+    max-width: 70ch;
+    line-height: 1.7;
+}
+
+.Cloze__text > .Cloze__paragraph:first-of-type {
+    margin-top: 0;
+}
+
+.Cloze__text > .Cloze__paragraph:last-of-type {
+    margin-bottom: 0;
+}
+
+.ClozeGap__input-wrap {
+    position: relative;
+    display: inline-flex;
+    margin-right: .5ch;
+    white-space: nowrap;
+}
+
+.ClozeGap__label {
+    display: inline-block;
+    padding: .2em .4em;
+
+    background: var(--bgcolor-exercise-label);
+    color: var(--color-exercise-label);
+}
+
+.ClozeGap__input-wrap--example .ClozeGap__label {
+    background: var(--bgcolor-example-label);
+    color: var(--color-example-label)
+}
+
+.ClozeGap__input-wrap:after {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+
+    width: 0;
+    height: 0;
+    border-top: 8px solid var(--color-arrow);
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+
+    content: " ";
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.ClozeGap__input {
+    appearance: none;
+    padding-left: .25rem;
+    padding-right: 1.2rem;
+    border: 1px solid var(--color-black);
+
+    background: var(--color-white);
+    font-size: inherit;
+    text-align-last: center;
+}
+
+.ClozeGap__input:focus {
+    outline: 2px solid var(--bgcolor-exercise-label);
+    outline-offset: 2px;
+}
+
+.Cloze__open-dialog-button {
+    padding: .75rem 2rem;
+    border: 2px solid transparent;
+    margin-top: 1rem;
+
+    background: var(--bgcolor-button);
+    color: var(--color-button);
+    font-family: var(--font-family--secondary), sans-serif;
+    font-weight: 700;
+}
+
+.Cloze__open-dialog-button:hover, .Cloze__open-dialog-button:focus {
+    border-color:var(--color-button--inverted);
+    background: var(--bgcolor-button--inverted);
+    color: var(--color-button--inverted);
+    text-decoration: underline;
+}
+
+.Cloze__open-dialog-button:focus {
+    outline: 2px solid var(--color-button--inverted);
+    outline-offset: 2px;
+}

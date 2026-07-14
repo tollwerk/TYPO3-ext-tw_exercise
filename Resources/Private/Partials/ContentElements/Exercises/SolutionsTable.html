@@ -1,0 +1,115 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+      xmlns:twexercise="http://typo3.org/ns/Tollwerk/tw_exercise/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:comment><!--
+
+    Table for solutions for exercises like cloze texts
+
+    @param string exerciseId       Exercise HTML id-attribute
+    @param int    currentPoints    Current points of user
+    @param int    maxPoints        Maximum number of points
+    @param int    pointsPerAnswer  Point per correct answer
+    @param int    pointsMultiplier Point per correct answer
+    @param array  solutions        Record with solutions
+
+--></f:comment>
+
+<table class="SolutionsTable"
+       id="{exerciseId}-solutions">
+    <f:comment><!-- Table caption --></f:comment>
+    <f:render section="Caption" arguments="{_all}"/>
+
+    <f:comment><!-- Table head --></f:comment>
+    <thead class="SolutionsTable__head">
+        <tr class="SolutionsTable__head">
+            <th class="SolutionsTable__head-th" scope="col">{f:translate(key: 'solutions_table.task', extensionName:
+                'TwExercise')}
+            </th>
+            <th class="SolutionsTable__head-th" scope="col">{f:translate(key: 'solutions_table.given_answer', extensionName:
+                'TwExercise')}
+            </th>
+            <th class="SolutionsTable__head-th" scope="col">{f:translate(key: 'solutions_table.correct_answer',
+                extensionName: 'TwExercise')}
+            </th>
+            <th class="SolutionsTable__head-th" scope="col">{f:translate(key: 'solutions_table.points', extensionName:
+                'TwExercise')}
+            </th>
+        </tr>
+    </thead>
+
+    <f:comment><!-- Table body --></f:comment>
+    <tbody class="SolutionsTable__body">
+        <f:for each="{solutions}" as="solution" iteration="i">
+            <tr class="SolutionsTable__body-row"
+            data-task="{solution.task}"
+            id="{exerciseId}-solution-{i.cycle}-row">
+                <th class="SolutionsTable__body-th SolutionsTable__task"
+                id="{exerciseId}-solution-{i.cycle}-task"
+                data-task="{solution.task}">{solution.task}</th>
+            <td class="SolutionsTable__body-td SolutionsTable__given-answer"
+                id="{exerciseId}-solution-{i.cycle}-given-answer"
+                data-given-answer>{solution.givenAnswer}</td>
+            <td class="SolutionsTable__body-td SolutionsTable__correct-answer"
+                id="{exerciseId}-solution-{i.cycle}-correct-answer"
+                data-correct-answer="{solution.correctAnswer}">{solution.correctAnswer}</td>
+            <td class="SolutionsTable__body-td SolutionsTable__points"
+                id="{exerciseId}-solution-{i.cycle}-points"
+                data-points="{solution.points}">{solution.points}</td>
+        </tr>
+    </f:for>
+    </tbody>
+</table>
+
+<f:comment><!-- Section: Caption --></f:comment>
+<f:section name="Caption">
+    <caption class="SolutionsTable__caption"
+             id="{exerciseId}-solutions-caption"
+             data-points-per-answer="{pointsPerAnswer}"
+             data-points-multiplier="{pointsMultiplier}">
+        <f:comment><!-- Pre-render sections for {f:translate}, avoid HTML inside translation file --></f:comment>
+        <f:variable name="currentPointsHtml" value="{f:render(section: 'CurrentPoints', arguments: '{_all}')}"/>
+        <f:variable name="maxPointsHtml" value="{f:render(section: 'MaxPoints', arguments: '{_all}')}"/>
+        <f:variable name="pointOrPoints" value="{f:if(condition: '{pointsPerAnswer} == 1', then: '{f:translate(key: \'solutions_table.point\', extensionName: \'TwExercise\')}', else: '{f:translate(key: \'solutions_table.points\', extensionName: \'TwExercise\')}')}"/>
+
+        <f:format.raw>
+            <f:if condition="{pointsMultiplier} && {pointsMultiplier} != 1">
+                <f:then>
+                    <f:translate key="solutions_table.caption.with_multiplier"
+                                 extensionName="TwExercise"
+                                 arguments="{
+                                    0: currentPointsHtml,
+                                    1: maxPointsHtml,
+                                    2: pointsPerAnswer,
+                                    3: pointOrPoints,
+                                    4: pointsMultiplier
+                                 }"/>
+                </f:then>
+                <f:else>
+                    <f:translate key="solutions_table.caption"
+                                 extensionName="TwExercise"
+                                 arguments="{
+                                    0: currentPointsHtml,
+                                    1: maxPointsHtml,
+                                    2: pointsPerAnswer,
+                                    3: pointOrPoints
+                                 }"/>
+                </f:else>
+            </f:if>
+        </f:format.raw>
+    </caption>
+</f:section>
+
+<f:comment><!-- Section: CurrentPoints --></f:comment>
+<f:section name="CurrentPoints">
+    <span class="SolutionsTable__current-points"
+          id="{exerciseId}-current-points"
+          data-current-points="{currentPoints}">{currentPoints}</span>
+</f:section>
+
+<f:comment><!-- Section: MaxPoints --></f:comment>
+<f:section name="MaxPoints">
+    <span class="SolutionsTable__max-points"
+          id="{exerciseId}-max-points"
+          data-max-points="{maxPoints}">{maxPoints}</span>
+</f:section>

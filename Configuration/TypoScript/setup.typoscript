@@ -1,0 +1,8 @@
+# Imports all files ending on .typoscript from the specified folder. It does however not import files from sub folders.
+@import 'EXT:tw_exercise/Configuration/TypoScript/Setup/ContentElements/*.typoscript'
+
+plugin.tx_twexercise {
+    settings {
+        debug = {$plugin.tx_twexercise.settings.debug}
+    }
+}

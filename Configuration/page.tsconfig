@@ -1,0 +1,17 @@
+# TODO: Move to ./PageTsConfig/ContentElements/cloze.typoscript
+mod.wizards.newContentElement.wizardItems {
+    // add the content element to the tab "common"
+    common {
+        elements {
+            twexercise_cloze {
+                iconIdentifier = content-text
+                title = LLL:EXT:tw_exercise/Resources/Private/Language/locallang_db.xlf:tt_content.twexercise_cloze.title
+                description = LLL:EXT:tw_exercise/Resources/Private/Language/locallang_db.xlf:tt_content.twexercise_cloze.description
+                tt_content_defValues {
+                    CType = twexercise_cloze
+                }
+            }
+        }
+        show := addToList(twexercise_cloze)
+    }
+}
