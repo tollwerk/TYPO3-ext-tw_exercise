@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:tw_exercise/Resources/Private/Language/locallang.xlf" date="2024-07-22T00:00:00Z" product-name="tw_exercise">
+        <header/>
+        <body>
+            <!-- Solutions dialog -->
+            <trans-unit id="solutions_dialog.show">
+                <source>Show solutions</source>
+                <target>Zu den Lösungen</target>
+            </trans-unit>
+            <trans-unit id="solutions_dialog.show.with_title">
+                <source>Show solutions – %s</source>
+                <target>Zu den Lösungen — %s</target>
+            </trans-unit>
+            <trans-unit id="solutions_dialog.heading">
+                <source>Solutions</source>
+                <target>Lösungen</target>
+            </trans-unit>
+            <trans-unit id="solutions_dialog.close">
+                <source>Close solutions</source>
+                <target>Lösungen schließen</target>
+            </trans-unit>
+
+            <!-- Solutions table -->
+            <trans-unit id="solutions_table.task">
+                <source>Task</source>
+                <target>Aufgabe</target>
+            </trans-unit>
+            <trans-unit id="solutions_table.given_answer">
+                <source>Given answer</source>
+                <target>Gegebene Antwort</target>
+            </trans-unit>
+            <trans-unit id="solutions_table.given_answer.empty">
+                <source>(No input)</source>
+                <target>(Keine Angabe)</target>
+            </trans-unit>
+            <trans-unit id="solutions_table.correct_answer">
+                <source>Correct answer</source>
+                <target>Richtige Antwort</target>
+            </trans-unit>
+            <trans-unit id="solutions_table.point">
+                <source>Point</source>
+                <target>Punkt</target>
+            </trans-unit>
+            <trans-unit id="solutions_table.points">
+                <source>Points</source>
+                <target>Punkte</target>
+            </trans-unit>
+            <trans-unit id="solutions_table.caption">
+                <source>Result: %s of %s points (per correct answer %s %s)</source>
+                <target>Ergebnis: %s von %s Punkten (pro richtiger Antwort %s %s)</target>
+            </trans-unit>
+            <trans-unit id="solutions_table.caption.with_multiplier">
+                <source>Result: %s of %s points (per correct answer %s %s times %s)</source>
+                <target>Ergebnis: %s von %s Punkten (pro richtiger Antwort %s %s mal %s)</target>
+            </trans-unit>
+
+            <!-- Cloze -->
+            <trans-unit id="cloze">
+                <source>Cloze</source>
+                <target>Lückentext</target>
+            </trans-unit>
+            <trans-unit id="cloze.gap">
+                <source>Gap</source>
+                <target>Lücke</target>
+            </trans-unit>
+            <trans-unit id="cloze.example.gap">
+                <source>Example gap</source>
+                <target>Beispiellücke</target>
+            </trans-unit>
+            <trans-unit id="cloze.gap.aria_label">
+                <source>please choose</source>
+                <target>bitte wählen</target>
+            </trans-unit>
+            <trans-unit id="cloze.gap.option.value">
+                <source>%s: %s</source>
+                <target>%s: %s</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

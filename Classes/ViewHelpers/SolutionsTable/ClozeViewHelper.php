@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @package    Tollwerk\TwExercise
  * @subpackage Tollwerk\TwExercise\ViewHelpers\SolutionsTable
  * @author     tollwerk GmbH <info@tollwerk.de>
- * @copyright  2024 tollwerk Gmbh <info@tollwerk.de>
+ * @copyright  2026 tollwerk Gmbh <info@tollwerk.de>
  * @license    GPL https://www.gnu.org/licenses/gpl-3.0.html.en
  * @link       https://tollwerk.de
  */
@@ -17,13 +17,8 @@ declare(strict_types=1);
 namespace Tollwerk\TwExercise\ViewHelpers\SolutionsTable;
 
 use Tollwerk\TwExercise\Domain\Model\Solution;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use \Closure;
 
 /**
  * ClozeSolutionsViewHelper
@@ -64,23 +59,15 @@ class ClozeViewHelper extends AbstractViewHelper
      * when compiled is able to render itself statically to increase performance. This
      * default implementation will simply delegate to the ViewHelperInvoker.
      *
-     * @param array                     $arguments
-     * @param Closure                  $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
-     *
-     * @return mixed
+     * @return array
      */
-    public static function renderStatic(
-        array $arguments,
-        Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ): array {
+    public function render(): array {
         // Get all given answers for further processing.
-        $givenAnswers = $arguments['givenAnswersByIdentifier'];
+        $givenAnswers = $this->arguments['givenAnswersByIdentifier'];
 
         // Fill solutions array with Solution objects.
         $solutions = [];
-        foreach($arguments['gaps'] as $gap) {
+        foreach($this->arguments['gaps'] as $gap) {
             // Get given answer.
             if(!$gap['is_example']) {
                 $givenAnswer = LocalizationUtility::translate(
