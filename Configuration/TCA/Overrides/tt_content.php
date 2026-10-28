@@ -119,7 +119,7 @@ $GLOBALS['TCA']['tt_content']['types']['twexercise_cloze'] = [
         'bodytext' => [
             'config' => [
                 'renderType' => 'codeEditor',
-                'format' => 'twexercise',
+                'format' => 'twexercise_cloze',
                 'rows' => 16,
             ],
         ],
