@@ -1,4 +1,4 @@
 lib.contentElement {
-    templateRootPaths.42 = EXT:tw_exercise/Resources/Private/Templates/ContentElements/
-    partialRootPaths.42 = EXT:tw_exercise/Resources/Private/Partials/ContentElements/
+    templateRootPaths.1793181689 = EXT:tw_exercise/Resources/Private/Templates/ContentElements/
+    partialRootPaths.1793181689 = EXT:tw_exercise/Resources/Private/Partials/ContentElements/
 }
