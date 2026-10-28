@@ -118,9 +118,9 @@ $GLOBALS['TCA']['tt_content']['types']['twexercise_cloze'] = [
     'columnsOverrides' => [
         'bodytext' => [
             'config' => [
-                'renderType' => 'text',
+                'renderType' => 'codeEditor',
+                'format' => 'twexercise',
                 'rows' => 16,
-                'wrap' => 'virtual',
             ],
         ],
     ],
