@@ -17,13 +17,17 @@
             <trans-unit id="tt_content.tx_twexercise_cloze_gaps">
                 <source>Lücken</source>
             </trans-unit>
-
-            <!-- Content element: twexercise_cloze -->
+            <trans-unit id="tt_content.tx_twexercise_cloze_gaps.description">
+                <source>Hier müssen die im Text eingetragenen Lücken angelegt und konfiguriert werden. Das Feld "Richtige Antwort" muss genau mit dem eingetragenen Wert im Fließtext oben übereinstimmen, inklusive der Groß- und Kleinschreibung. Die Reihenfolge der hier angelegten Lücken ist egal, sollte aber zur besseren Verständnis der Reihenfolge im Text entsprechen.</source>
+            </trans-unit>
             <trans-unit id="tt_content.twexercise_cloze.title">
                 <source>Lückentext</source>
             </trans-unit>
             <trans-unit id="tt_content.twexercise_cloze.description">
                 <source>Ein frei eingebbarer Lückentext. Auswahlmöglichkeiten und sonstige Einstellungen jeder einzelnen Lücke sind anpassbar.</source>
+            </trans-unit>
+            <trans-unit id="tt_content.bodytext.description">
+                <source>Lücken in doppelte [[Eckige Klammern]] einfassen. Darin steht die [[richtige Antwort]]. {{Alles, was innerhalb von [[doppelten geschweiften Klammern]] um eine Lücke herum steht, ist zusätzlicher Beschreibungstext für diese Lücke}}. Dieser Beschreibungstext hilft bei der Beantwortung der Frage, ohne den gesamten Text nochmal lesen zu müssen.</source>
             </trans-unit>
 
             <!-- tx_twexercise_domain_model_cloze_gap -->

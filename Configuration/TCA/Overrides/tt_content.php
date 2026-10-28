@@ -38,6 +38,7 @@ $newColumns = [
     ],
     'tx_twexercise_cloze_gaps' => [
         'label' => 'LLL:EXT:tw_exercise/Resources/Private/Language/locallang_db.xlf:tt_content.tx_twexercise_cloze_gaps',
+        'description' => 'LLL:EXT:tw_exercise/Resources/Private/Language/locallang_db.xlf:tt_content.tx_twexercise_cloze_gaps.description',
         'config' => [
             'type' => 'inline',
             'foreign_table' => 'tx_twexercise_domain_model_cloze_gap',
@@ -98,8 +99,8 @@ $GLOBALS['TCA']['tt_content']['types']['twexercise_cloze'] = [
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                 --palette--;;general,
                --palette--;;headers,
+              --palette--;;clozePoints,
                bodytext;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:bodytext_formlabel,
-               --palette--;;clozePoints,
                tx_twexercise_cloze_gaps,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
                  --palette--;;frames, 
@@ -117,6 +118,7 @@ $GLOBALS['TCA']['tt_content']['types']['twexercise_cloze'] = [
          ',
     'columnsOverrides' => [
         'bodytext' => [
+            'description' => 'LLL:EXT:tw_exercise/Resources/Private/Language/locallang_db.xlf:tt_content.bodytext.description',
             'config' => [
                 'renderType' => 'codeEditor',
                 'format' => 'twexercise_cloze',
