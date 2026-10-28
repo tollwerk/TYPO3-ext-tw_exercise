@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @package    Tollwerk\TwExercise
  * @subpackage Tollwerk\TwExercise\DataProcessing
  * @author     tollwerk GmbH <info@tollwerk.de>
- * @copyright  2024 tollwerk Gmbh <info@tollwerk.de>
+ * @copyright  2026 tollwerk Gmbh <info@tollwerk.de>
  * @license    GPL https://www.gnu.org/licenses/gpl-3.0.html.en
  * @link       https://tollwerk.de
  */
@@ -19,11 +19,9 @@ namespace Tollwerk\TwExercise\DataProcessing;
 use Tollwerk\TwExercise\DataProcessing\ClozeText\GapPart;
 use Tollwerk\TwExercise\DataProcessing\ClozeText\PartProcessor;
 use Tollwerk\TwExercise\DataProcessing\ClozeText\TextPart;
-use Tollwerk\TwExercise\Domain\Model\ClozeGap;
 use Tollwerk\TwExercise\Domain\Repository\ClozeGapRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
@@ -45,8 +43,6 @@ class ClozeTextDataProcessor implements DataProcessorInterface
 
     /**
      * Constructor
-     *
-     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
     public function __construct() {
         $this->clozeGapRepository = GeneralUtility::makeInstance(ClozeGapRepository::class);
@@ -204,28 +200,30 @@ class ClozeTextDataProcessor implements DataProcessorInterface
     )
     {
         // Initialize some basic properties.
+        // @extensionScannerIgnoreLine
+        $cObjData = $cObj->data;
         $clozeData = [];
 
         // Get all cloze gap records for this content element.
-        $clozeData['gaps'] = $this->clozeGapRepository->findByParentId($cObj->data['uid']);
+        $clozeData['gaps'] = $this->clozeGapRepository->findByParentId($cObjData['uid']);
 
         // Get max points.
         $clozeData['maxPoints'] = round(
             (
                 count($clozeData['gaps'])
-                * floatval($cObj->data['tx_twexercise_points'])
-                * floatval($cObj->data['tx_twexercise_points_multiplier'])
+                * floatval($cObjData['tx_twexercise_points'])
+                * floatval($cObjData['tx_twexercise_points_multiplier'])
             ),
             2
         );
 
         // Get and process all paragraphs.
         $clozeData['paragraphs'] = [];
-        $paragraphs = $this->splitByDoubleNewLine($cObj->data['bodytext']);
+        $paragraphs = $this->splitByDoubleNewLine($cObjData['bodytext']);
         foreach ($paragraphs as $paragraphText) {
             // Get all text parts of this paragraph and process them.
             $parts = $this->splitByClozeMarkers($paragraphText);
-            $processedParts = $this->processClozeParts($parts, $cObj->data['uid']);
+            $processedParts = $this->processClozeParts($parts, $cObjData['uid']);
             $clozeData['paragraphs'][] = $processedParts;
         }
 
