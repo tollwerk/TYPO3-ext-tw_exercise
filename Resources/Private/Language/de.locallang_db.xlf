@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:tw_exercise/Resources/Private/Language/locallang_db.xlf" date="2024-07-22T00:00:00Z" product-name="tw_exercise">
+        <header/>
+        <body>
+            <trans-unit id="settings.debug">
+                <source>Activate debug mode:Only works if frontend debugging is enabled in the general TYPO3 system configuration</source>
+                <target>Debug-Modus aktivieren:Greift nur, wenn zusätzlich in der TYPO3-Systemkonfiguration das Frontend-Debugging aktiviert wurde</target>
+            </trans-unit>
+
+            <!-- New columns for tt_content -->
+            <trans-unit id="tt_content.tx_twexercise_points">
+                <source>Score per gap</source>
+                <target>Punkte pro Lücke (1 bis 255)</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_twexercise_points_multiplier">
+                <source>Score multiplier</source>
+                <target>Punkte-Multiplikator (1 bis 255)</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_twexercise_cloze_gaps">
+                <source>Gaps</source>
+                <target>Lücken</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_twexercise_cloze_gaps.description">
+                <target>Here you have to add and configure the gaps you typed into the text. The field "Correct answer" must have the exact same value as your gap inside the text, including uppercase and lowercase letters. Die order of these gaps has no effect, but keeping them in the same order as inside the text helps keeping track of them.</target>
+                <target>Hier müssen die im Text eingetragenen Lücken angelegt und konfiguriert werden. Das Feld "Richtige Antwort" muss genau mit dem eingetragenen Wert im Fließtext oben übereinstimmen, inklusive der Groß- und Kleinschreibung. Die Reihenfolge der hier angelegten Lücken ist egal, sollte aber zur besseren Verständnis der Reihenfolge im Text entsprechen.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.twexercise_cloze.title">
+                <source>Cloze</source>
+                <target>Lückentext</target>
+            </trans-unit>
+            <trans-unit id="tt_content.twexercise_cloze.description">
+                <source>A customizable cloze.</source>
+                <target>Ein anpassbarer Lückentext.</target>
+            </trans-unit>
+            <trans-unit id="tt_content.bodytext.description">
+                <source>Enclcose gaps in [[double brackets]] with the [[correct answer]] inside. {{When a gap is enclosed in [[double curly braces]], everyhing inside those curly braces is an additional description for this gap}}. This additional description helps answering the question without having to read the entire text.</source>
+                <target>Lücken in doppelte [[Eckige Klammern]] einfassen. Darin steht die [[richtige Antwort]]. {{Alles, was innerhalb von [[doppelten geschweiften Klammern]] um eine Lücke herum steht, ist zusätzlicher Beschreibungstext für diese Lücke}}. Dieser Beschreibungstext hilft bei der Beantwortung der Frage, ohne den gesamten Text nochmal lesen zu müssen.</target>
+            </trans-unit>
+
+            <!-- tx_twexercise_domain_model_cloze_gap -->
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap">
+                <source>Gap</source>
+                <target>Lücke</target>
+            </trans-unit>
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.identifier">
+                <source>Numbering like "1" or "A2"</source>
+                <target>Nummerierung wie zum Beispiel "1" oder "A2"</target>
+            </trans-unit>
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.is_example">
+                <source>Just an example (already answered, no score)</source>
+                <target>Ist nur ein Beispiel (schon ausgefüllt, keine Wertung)</target>
+            </trans-unit>
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.value">
+                <source>Correct answer</source>
+                <target>Richtige Antwort</target>
+            </trans-unit>
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.options">
+                <source>All answers, including the correct one</source>
+                <target>Alle Antworten, inklusive der richtigen</target>
+            </trans-unit>
+
+            <trans-unit id="tx_twexercise_domain_model_cloze_gap.options.description">
+                <source>One answer per line. You can add a custom label before each answer, separated by a semicolon, like "a: First answer".</source>
+                <target>Eine Antwort pro Zeile. Anworten können mit einer vorangestellten Beschriftung mit Doppelpunkt versehen werden, zum Beispiel "a: Erste Antwort".</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
